@@ -1,5 +1,8 @@
 <?php
 session_start();
+//include __DIR__ . '/../header.php';
+
+
 
 //include __DIR__ . '/../../Models/User.php';
 include __DIR__ . '/../../Repositories/UserRepository.php'; // Adjust the path accordingly
@@ -35,11 +38,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html lang="en">
 <!-- ... (head and other HTML tags) ... -->
-
+<head>  
+    <title>FS Flower Shop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
 <body>
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
+                <h1> Welcome! </h1>
                 <h2>Login</h2>
                 <?php if (isset($error)): ?>
                     <div class="alert alert-danger"><?= $error ?></div>
@@ -58,8 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
     </div>
-
-    <!-- ... (remaining code) ... -->
+   
 </body>
 
 </html>

@@ -1,7 +1,7 @@
 <?php
-
 class PatternRouter
 {
+
     private function stripParameters($uri)
     {
         if (str_contains($uri, '?')) {
@@ -10,67 +10,63 @@ class PatternRouter
         return $uri;
     }
 
-    private function loadController($controllerName, $api = false)
-    {
-        // Adjust the namespace based on API or regular controllers
-        $namespace = $api ? '\\app\\api\\controllers\\' : '\\app\\controllers\\';
-    
-        // Adjust the path based on API or regular controllers
-        $path = $api ? 'api/controllers/' : 'controllers/';
-    
-        // Load the file with the controller class
-        $filename = __DIR__ . "/$path$controllerName.php";
-    
-        $controllerFullName = $namespace . $controllerName;
-    
-        if (file_exists($filename)) {
-            require_once $filename;
-        } else {
-            throw new \Exception('Controller not found', 404);
-        }
-    
-        return $controllerFullName;
-    }
-    
     public function route($uri)
     {
+        // Path algorithm
+        // pattern = /controller/method
+
+        // check if we are requesting an api route
+        $api = false;
+        if (str_starts_with($uri, "api/")) {
+            $uri = substr($uri, 4);
+            $api = true;
+        }
+
+        // set default controller/method
+        $defaultcontroller = 'home';
+        $defaultmethod = 'index';
+
+        // ignore query parameters
+        $uri = $this->stripParameters($uri);
+
+        // read controller/method names from URL
+        $explodedUri = explode('/', $uri);
+
+        if (!isset($explodedUri[0]) || empty($explodedUri[0])) {
+            $explodedUri[0] = $defaultcontroller;
+        }
+        $controllerName = $explodedUri[0] . "controller";
+
+        if (!isset($explodedUri[1]) || empty($explodedUri[1])) {
+            $explodedUri[1] = $defaultmethod;
+        }
+        $methodName = $explodedUri[1];
+
+        // load the file with the controller class
+        
+        $filename = __DIR__ . '/controllers/' . $controllerName . '.php';
+        if ($api) {
+            $filename = __DIR__ . '/api/controllers/' . $controllerName . '.php';
+        }
+        if (file_exists($filename)) {
+            require $filename;
+        } else {
+            http_response_code(404);
+            die();
+        }
+
+
+        // dynamically call relevant controller method
+
         try {
-            // Check if we are requesting an API route
-            $api = false;
-            if (str_starts_with($uri, "api/")) {
-                $uri = substr($uri, 4);
-                $api = true;
-            }
-    
-            // Set default controller/method
-            $defaultController = 'home';
-            $defaultMethod = 'index';
-    
-            // Ignore query parameters
-            $uri = $this->stripParameters($uri);
-    
-            // Read controller/method names from URL
-            $explodedUri = explode('/', $uri);
-    
-            $controllerName = ucfirst(empty($explodedUri[0]) ? $defaultController : $explodedUri[0]) . "Controller";
-            $methodName = empty($explodedUri[1]) ? $defaultMethod : $explodedUri[1];
-    
-            // Load the controller
-            $controllerFullName = $this->loadController($controllerName, $api);
-    
-            // Instantiate the appropriate service based on API or regular controllers
-            $serviceNamespace = $api ? '\\App\\Services\\ArticleService' : '\\App\\Services\\FlowerService';
-            $service = new $serviceNamespace();
-    
-            // Instantiate the controller and pass the service as a dependency
-            $controllerObj = new $controllerFullName($service);
+
+            $controllerObj = new $controllerName;
             $controllerObj->{$methodName}();
-        } catch (\Exception $e) {
-            // Log the exception or display a user-friendly error page
-            error_log($e->getMessage());
-            http_response_code($e->getCode() ?: 500);
-            // Display a user-friendly error page or message
-            echo 'Error: ' . $e->getMessage();
+
+        } catch (Exception $e) {
+
+            http_response_code(404);
+            die();
         }
     }
-}    
+}

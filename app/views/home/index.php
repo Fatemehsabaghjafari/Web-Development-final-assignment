@@ -25,6 +25,7 @@
 </head>
 
 <body>
+    
     <?php
 include __DIR__ . '/../header.php';
 ?>
@@ -33,33 +34,36 @@ include __DIR__ . '/../header.php';
             <h1 class="display-4">Welcome to the FS flower shop!</h1>
             <p class="lead">Discover a wide range of flowers.</p>
         </div>
-    </div>
- <!-- Product Section -->
- <section>
-        <div class="container">
-            <h2>Flowers</h2>
-            <div class="row">
-                <?php
-            
-                foreach ($model as $flower) {
-                ?>
-                    <div class="col-md-4 col-sm-6 col-12 mb-4">
-                        <div class="card">
-                            
-                            <div class="card-body">
-                                <h5 class="card-title"><?= $flower->id ?></h5>
-                                <p class="card-text"><small><?= $flower->name ?></small></p>
-                               
-                                <button class="btn btn-primary">+</button>
-                            </div>
-                        </div>
-                    </div>
-                <?php
-                }
-                ?>
+  </div>
+
+  <section class="container mb-4">
+        
+        <form action="/app/views/home/index.php" method="GET" class="mb-4">
+
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for flowers..." name="query">
+                <button type="submit" class="btn btn-primary">Search</button>
             </div>
+        </form>
+
+        <h2> Flowers </h2>
+        
+        <div class="row">
+            <?php
+            // Include the FlowerRepository and fetch filtered flowers
+           // require_once __DIR__ . '/../../repositories/FlowerRepository.php';
+            $flowerRepository = new \App\Repositories\FlowerRepository();
+            $searchQuery = isset($_GET['query']) ? $_GET['query'] : '';
+            $filteredFlowers = $flowerRepository->searchByName($searchQuery);
+
+            // Render the filtered flowers
+            include 'render-flowers.php';
+            ?>
         </div>
- </section>
+    </section>
+
+ <!-- Product Section -->
+
 
  <footer class="bg-dark text-light py-4">
         <div class="container text-center">

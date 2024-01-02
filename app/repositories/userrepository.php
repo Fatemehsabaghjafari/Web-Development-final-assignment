@@ -1,5 +1,6 @@
 <?php
 namespace App\Repositories;
+require_once __DIR__ . '/../models/user.php';
 use PDO;
 class UserRepository {
 private $db;

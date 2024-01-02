@@ -1,24 +1,19 @@
 <?php
-namespace app\api\controllers;
 
 require __DIR__ . '/../../services/articleservice.php';
-//require __DIR__ . '/../../services/flowerservice.php';
+
 
 
 class ArticleController
 {
 
     private $articleService;
-
-    // initialize services
-    function __construct()
-    {
-        $this->articleService = new \App\Services\ArticleService();
-    }
+    
 
     // router maps this to /api/article automatically
     public function index()
     {
+        $this->articleService = new \App\Services\ArticleService();
 
         // Respond to a GET request to /api/article
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
