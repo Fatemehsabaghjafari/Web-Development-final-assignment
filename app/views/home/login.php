@@ -1,11 +1,8 @@
 <?php
 session_start();
-//include __DIR__ . '/../header.php';
 
 
-
-//include __DIR__ . '/../../Models/User.php';
-include __DIR__ . '/../../Repositories/UserRepository.php'; // Adjust the path accordingly
+include __DIR__ . '/../../Repositories/UserRepository.php'; 
 
 // Create an instance of UserRepository
 $userRepository = new App\Repositories\UserRepository();

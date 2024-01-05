@@ -12,3 +12,17 @@ img {
     max-width: 115px;
     max-height: 100px;
 }
+ 
+/* Style for the Remove button in the cart */
+.remove-button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.remove-button:hover {
+    background-color: #c82333;
+}

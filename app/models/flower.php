@@ -5,5 +5,5 @@ public $id;
 public $name;
 public $color;
 public $image_url;
-
+public $price;
 }

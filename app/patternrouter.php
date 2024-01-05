@@ -12,7 +12,15 @@ class PatternRouter
 
     public function route($uri)
     {
-        // Path algorithm
+        if (
+            str_ends_with($uri, ".js")
+            || str_ends_with($uri, ".css")
+        ) {
+            readfile(__DIR__ . "/" . $uri);
+            die();
+        }
+
+    
         // pattern = /controller/method
 
         // check if we are requesting an api route
@@ -69,4 +77,5 @@ class PatternRouter
             die();
         }
     }
+   
 }

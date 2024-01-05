@@ -21,6 +21,7 @@ class SwitchRouter {
                     $controller = new HomeController();
                     $controller->login();
                     break;
+                    
 
             default:
                 http_response_code(404);
