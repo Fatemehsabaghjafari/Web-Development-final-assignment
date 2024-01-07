@@ -56,39 +56,51 @@ include __DIR__ . '/../header.php';
         <p>Total: €<span id="cart-total">0.00</span></p>
      </div>
     </div>
-    
+   
+
+
   <section class="container mb-4">
         
-        <form action="/app/views/home/index.php" method="GET" class="mb-4">
+  <form  method="post" class="mb-4">
 
-            <div class="input-group">
+<div class="input-group">
 
-                <input type="text" class="form-control" placeholder="Search for flowers..." name="query">
+    <input type="text" class="form-control" placeholder="Search for flowers..." name="search">
 
-                <button type="submit" class="btn btn-primary">Search</button>
+    <button type="submit" name="submit" class="btn btn-primary">Search</button>
 
-            </div>
+</div>
+<div class="row">
+<?php
 
-        </form>
+$flowerRepository = new \App\Repositories\FlowerRepository();
 
-        <h2> Flowers </h2>
+$filteredFlowers = $flowerRepository->search();
+
+include 'render-flowers.php';
+
+?>
+
+</div>
+</form> 
+<h2> Flowers </h2>
        
-        <div class="row">
-            <?php
+       <div class="row">
+           <?php
 
-            $flowerRepository = new \App\Repositories\FlowerRepository();
-            $searchQuery = isset($_GET['query']) ? $_GET['query'] : '';
-            $filteredFlowers = $flowerRepository->searchByName($searchQuery);
+           $flowerRepository = new \App\Repositories\FlowerRepository();
+          // $searchQuery = isset($_GET['query']) ? $_GET['query'] : '';
+           $flowers = $flowerRepository->getAll();
 
-            include 'render-flowers.php';
+           include 'render-flowers.php';
 
-            ?>
+           ?>
 
-        </div>
+       </div>
 
-    </div>
+   </div>    
 
-    </section>
+</section>
 
    
 
