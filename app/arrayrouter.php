@@ -1,7 +1,7 @@
 <?php
 class ArrayRouter {
     public function route($uri) {
-        // defining routes
+      
         $routes = array(
             '' => array(
                 'controller' => 'homecontroller',
@@ -12,11 +12,28 @@ class ArrayRouter {
                 'method' => 'about'
             ),
             'login' => array(
-                'controller' => 'homecontroller',
+                'controller' => 'logincontroller',
                 'method' => 'login'
             ),
+
+            'add-to-cart' => array(
+               'controller' => 'cartcontroller', 
+                'method' => 'addToCart'
+             ),
+
+            'get-cart-items' => array(
+                'controller' => 'cartcontroller', 
+                'method' => 'getCartItems'
+             ),
             
         );
+
+        // Add this method to handle JSON responses
+     function jsonResponse($data) {
+        header('Content-Type: application/json');
+        echo json_encode($data);
+        exit;
+    }
 
         // deal with undefined paths first
         if(!isset($routes[$uri]['controller']) || !isset($routes[$uri]['method'])) {

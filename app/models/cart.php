@@ -1,10 +1,8 @@
 <?php
 namespace App\Models;
-class Flower {
+class Cart {
 public $id;
 public $name;
-public $color;
-public $image_url;
 public $price;
 public $quantity;
 }

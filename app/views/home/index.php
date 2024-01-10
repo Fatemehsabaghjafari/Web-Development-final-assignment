@@ -7,39 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FS FLOWER SHOP</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="app/views/home/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css">
-
    <style> 
-
-    .social-icon {
-    margin: 0 10px;
-    font-size: 24px;
-    transition: color 0.3s ease-in-out;
-    }
-
-    .social-icon:hover {
-    color: #ffc107; 
-    }
-
-    img {   
-    max-width: 400px;
-    height: 300px;
-}
-
-    .card{
-        height: 500px;
-    }
+    <?php include 'style.css'; ?>
     </style>
-
 </head>
 
 <body>
     
 <?php
-
 include __DIR__ . '/../header.php';
-
 ?>
 
  <div class="jumbotron jumbotron-fluid text-center">
@@ -49,13 +27,6 @@ include __DIR__ . '/../header.php';
         </div>
   </div>
 
-  <div class="container mt-5">
-     <div id="shopping-cart">
-        <h2>Shopping Cart</h2>
-        <ul id="cart-items"></ul>
-        <p>Total: €<span id="cart-total">0.00</span></p>
-     </div>
-    </div>
    
 
 
@@ -72,40 +43,29 @@ include __DIR__ . '/../header.php';
 </div>
 <div class="row">
 <?php
-
 $flowerRepository = new \App\Repositories\FlowerRepository();
-
 $filteredFlowers = $flowerRepository->search();
-
 include 'render-flowers.php';
-
 ?>
 
 </div>
 </form> 
-<h2> Flowers </h2>
-       
+<h2> Flowers </h2>     
        <div class="row">
            <?php
-
            $flowerRepository = new \App\Repositories\FlowerRepository();
-          // $searchQuery = isset($_GET['query']) ? $_GET['query'] : '';
            $flowers = $flowerRepository->getAll();
 
+           
            include 'render-flowers.php';
-
            ?>
-
        </div>
-
    </div>    
-
 </section>
 
    
 
-
-    <footer class="bg-dark text-light py-4">
+<footer class="bg-dark text-light py-4">
         <div class="container text-center">
             <h4>Follow Us</h4>
             <div class="social-icons">
