@@ -97,3 +97,40 @@ document.addEventListener("DOMContentLoaded", function () {
         updateCartView();
     }
 });
+
+function modifyQuantity(itemId, change) {
+    var quantityInput = document.getElementById('quantity_' + itemId);
+    var currentQuantity = parseInt(quantityInput.value, 10);
+
+    // Ensure quantity is at least 1
+    var newQuantity = Math.max(1, currentQuantity + change);
+
+    // Update the input field with the new quantity
+    quantityInput.value = newQuantity;
+
+    // Send a request to the server to update the quantity in the database
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "", true); // Leave the URL empty to send the request to the same page
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            // Handle the response from the server if needed
+            console.log(xhr.responseText);
+        }
+    };
+    xhr.send("action=update_quantity&item_id=" + itemId + "&new_quantity=" + newQuantity);
+}
+
+function removeItem(itemId) {
+    // Send a request to the server to remove the item from the cart
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "", true); // Leave the URL empty to send the request to the same page
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            // Handle the response from the server if needed
+            console.log(xhr.responseText);
+        }
+    };
+    xhr.send("action=remove_item&item_id=" + itemId);
+}

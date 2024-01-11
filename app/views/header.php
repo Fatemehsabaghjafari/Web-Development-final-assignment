@@ -22,9 +22,18 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
                             <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-                            <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
                             <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
-                            <li class="nav-item"><a href="/cart" class="nav-link"><i class="fa-solid fa-cart-shopping"></i><span><sup>0</sup><span></a></li>
+                            <?php
+                                // Include CartRepository
+                                require_once __DIR__ . '/../repositories/cartrepository.php';
+                                
+                                // Create an instance of CartRepository
+                                $cartRepository = new \App\Repositories\CartRepository();
+
+                                // Get the cart item count
+                                $cartItemCount = $cartRepository->getCartItemCount();
+                            ?>
+                            <li class="nav-item"><a href="/cart" class="nav-link"><i class="fa-solid fa-cart-shopping"></i><span><sup><?php echo $cartItemCount; ?></sup><span></a></li>
                         </ul>
                     </div>
                 </div>

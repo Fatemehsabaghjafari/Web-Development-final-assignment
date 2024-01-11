@@ -4,7 +4,18 @@ require_once __DIR__ . '/../../repositories/cartrepository.php';
 if (!empty($flowers)) {
     foreach ($flowers as $flower) {
         ?>
+       
         <div class="col-md-4 col-sm-6 col-12 mb-4">
+        <?php
+    if(isset($display_message)){
+    echo "<div class='display_message'>
+    <span>$display_message</span>
+    <i class='fas fa-times' onClick='this.parentElement.style.display=`none`;'></i>
+
+    </div>";
+    }   
+    ?>
+
             <form method="post" action="">
                 <div class="card">
                     <img src="<?= $flower->image_url ?>" class="card-img-top" alt="<?= $flower->name ?> Image">
