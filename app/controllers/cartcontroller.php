@@ -1,38 +1,72 @@
 <?php
 
-require __DIR__ . '/controller.php';
-require __DIR__ . '/../repositories/cartrepository.php';
+require_once __DIR__ . '/controller.php';
+require_once __DIR__ . '/../services/cartservice.php';
 
 class CartController extends Controller
 {
-    private $cartRepository;
+    private $cartService;
 
     public function __construct()
     {
-        $this->cartRepository = new \App\Repositories\CartRepository();
+        $this->cartService = new \App\Services\CartService();
     }
 
     public function index()
     {
+        $cartItemCount = $this->cartService->getCartItemCount();
+       // Handle updating item quantity
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
+            switch ($_POST['action']) {
+                case 'update_quantity':
+                    $this->handleUpdateQuantity();
+                    break;
+                case 'remove_item':
+                    $this->handleRemoveItem();
+                    break;
+            }
+        }
+
+        $cartItems = $this->cartService->getAllCartItems();
+        $totalAmount = $this->calculateTotalAmount($cartItems);
+
         include '../views/home/cart.php';
     }
 
-    public function addToCart()
+    private function handleUpdateQuantity()
     {
-        $data = json_decode(file_get_contents('php://input'), true);
+        if (isset($_POST['item_id']) && isset($_POST['new_quantity'])) {
+            $itemId = $_POST['item_id'];
+            $newQuantity = $_POST['new_quantity'];
 
-        $flowerId = $data['flowerId'];
-        $quantity = $data['quantity'];
+            $this->cartService->updateQuantity($itemId, $newQuantity);
 
-        $success = $this->cartRepository->addToCart($flowerId, $quantity);
-
-        return $this->respondWithJson(['success' => $success]);
+            // Redirect back to the cart page after handling the action
+            header('Location: cart.php');
+            exit;
+        }
     }
 
-    public function getCartItems()
+    private function handleRemoveItem()
     {
-        $cartItems = $this->cartRepository->getCartItems();
+        if (isset($_POST['item_id'])) {
+            $itemId = $_POST['item_id'];
 
-        return $this->respondWithJson(['success' => true, 'cartItems' => $cartItems]);
+            $this->cartService->removeItem($itemId);
+
+            // Redirect back to the cart page after handling the action
+            header('Location: cart.php');
+            exit;
+        }
+    }
+
+    private function calculateTotalAmount($cartItems)
+    {
+        $totalAmount = 0;
+        foreach ($cartItems as $item) {
+            $totalAmount += $item->quantity * $item->price;
+        }
+
+        return $totalAmount;
     }
 }

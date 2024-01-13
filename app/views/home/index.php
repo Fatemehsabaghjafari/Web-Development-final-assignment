@@ -32,7 +32,7 @@ include __DIR__ . '/../header.php';
 
   <section class="container mb-4">
         
-  <form  method="post" class="mb-4">
+<form  method="post" class="mb-4">
 
 <div class="input-group">
 
@@ -41,26 +41,25 @@ include __DIR__ . '/../header.php';
     <button type="submit" name="submit" class="btn btn-primary">Search</button>
 
 </div>
+
+</form> 
+
 <div class="row">
 <?php
-$flowerRepository = new \App\Repositories\FlowerRepository();
-$filteredFlowers = $flowerRepository->search();
-include 'render-flowers.php';
+include 'search-flowers.php';
 ?>
 
 </div>
-</form> 
+
 <h2> Flowers </h2>     
        <div class="row">
-           <?php
-           $flowerRepository = new \App\Repositories\FlowerRepository();
-           $flowers = $flowerRepository->getAll();
-
-           
+           <?php   
+                 
            include 'render-flowers.php';
            ?>
        </div>
-   </div>    
+   </div>  
+
 </section>
 
    

@@ -134,3 +134,8 @@ function removeItem(itemId) {
     };
     xhr.send("action=remove_item&item_id=" + itemId);
 }
+
+function checkout() {
+   
+    window.location.href = '/login'; 
+}
