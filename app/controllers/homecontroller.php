@@ -39,9 +39,11 @@ class HomeController extends Controller
        if ($this->cartService->isProductInCart($products_name)) {
         // Display a message indicating that the item is already in the cart
         $display_message = "Item is already in the cart.";
+        echo "Item is already in the cart.";
     } else {
         // The product is not in the cart, proceed with adding to the cart
         $display_message = "Item added to cart!";
+        echo "Item added to cart!";
         $this->cartService->insertToCart($products_quantity, $products_name, $products_price);
     }
     }

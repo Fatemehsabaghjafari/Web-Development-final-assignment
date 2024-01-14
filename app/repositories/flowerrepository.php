@@ -10,12 +10,14 @@ class FlowerRepository {
         include(__DIR__ . '/../config/dbconfig.php');
         $this->db = new PDO("$type:host=$servername;dbname=$dbname", $username, $password);
     }
-
-    public function getAll() {
-        $stmt = $this->db->query('SELECT * FROM flowers');
+    
+    public function getAll()
+    {
+        $stmt = $this->db->prepare('SELECT * FROM flowers');
+        $stmt->execute();
         $flowers = $stmt->fetchAll(PDO::FETCH_CLASS, 'App\\Models\\Flower');
         return $flowers;
-    }
+    }    
 
     public function search()
     {

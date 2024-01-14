@@ -1,5 +1,12 @@
 <?php
 
+//if (isset($display_message)) {
+//    echo "<div>
+//            <span>$display_message</span>
+//            <i class='fas fa-times' onClick='this.parentElement.style.display=`none`;'></i>
+//         </div>";
+//}
+
 if (!empty($flowers)) {
     foreach ($flowers as $flower) {
         ?>     
@@ -19,12 +26,5 @@ if (!empty($flowers)) {
         </div>
         <?php
     }
-}
-
-if (isset($display_message)) {
-    echo "<div class='display_message'>
-            <span>$display_message</span>
-            <i class='fas fa-times' onClick='this.parentElement.style.display=`none`;'></i>
-          </div>";
 }
 ?>

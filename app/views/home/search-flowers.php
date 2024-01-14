@@ -1,5 +1,4 @@
 <?php
-
 if (!empty($filteredFlowers)) {
     foreach ($filteredFlowers as $filteredFlower) {
         ?>     

@@ -1,16 +1,5 @@
 <?php
 session_start();
-
-
-include __DIR__ . '/../../Repositories/UserRepository.php'; 
-
-// Create an instance of UserRepository
-$userRepository = new App\Repositories\UserRepository();
-
-// Assuming $model is an array of user objects fetched from the database
-$model = $userRepository->getAllUsers(); // Call the method on the instance
-
-
 // Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve username and password from the form
@@ -34,7 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <html lang="en">
-<!-- ... (head and other HTML tags) ... -->
 <head>  
     <title>FS Flower Shop</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">

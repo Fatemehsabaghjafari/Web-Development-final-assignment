@@ -17,11 +17,10 @@ class CartRepository
 
     public function removeItem($itemId)
     {
-    $stmt = $this->db->prepare("DELETE FROM cart WHERE id = :item_id");
-    $stmt->bindParam(':item_id', $itemId);
-    $stmt->execute();
+        $stmt = $this->db->prepare("DELETE FROM cart WHERE id = :item_id");
+        $stmt->bindParam(':item_id', $itemId);
+        $stmt->execute();
     }
-
 
     public function isProductInCart($productName)
     {
@@ -42,32 +41,24 @@ class CartRepository
 
     public function getAllCartItems()
     {
-        $stmt = $this->db->query("SELECT * FROM cart");
-        return $stmt->fetchAll(PDO::FETCH_OBJ);
-    }
+    $stmt = $this->db->prepare("SELECT * FROM cart");
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }   
 
     public function getCartItemCount()
     {
-        $stmt = $this->db->query("SELECT COUNT(*) FROM cart");
-        return $stmt->fetchColumn();
+    $stmt = $this->db->prepare("SELECT COUNT(*) FROM cart");
+    $stmt->execute();
+    return $stmt->fetchColumn();
     }
 
     public function insertToCart($products_quantity, $products_name, $products_price)
     {
-        if (!$this->isProductInCart($products_name)) {
-            $stmt = $this->db->prepare("INSERT INTO cart (quantity, name, price) VALUES (:quantity, :name, :price)");
-            $stmt->bindParam(':quantity', $products_quantity);
-            $stmt->bindParam(':name', $products_name);
-            $stmt->bindParam(':price', $products_price);
-            $stmt->execute();
-
-            // Item successfully added to cart
-            $display_message = "Item added to cart!";
-        } else {
-            // Item is already in the cart
-            $display_message = "Item is already in the cart.";
-        }
-      
+        $stmt = $this->db->prepare("INSERT INTO cart (quantity, name, price) VALUES (:quantity, :name, :price)");
+        $stmt->bindParam(':quantity', $products_quantity);
+        $stmt->bindParam(':name', $products_name);
+        $stmt->bindParam(':price', $products_price);
+        $stmt->execute();
     }
 }
-?>
