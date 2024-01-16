@@ -22,7 +22,7 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
                             <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-                            <li class="nav-item"><a href="/cart" class="nav-link"><i class="fa-solid fa-cart-shopping"></i><span><sup><?php echo $cartItemCount; ?></sup><span></a></li>
+                            <li class="nav-item"><a href="/cart" class="nav-link"><i class="fa-solid fa-cart-shopping"></i><span><sup id="cartItemCount"><?php echo $cartItemCount; ?></sup><span></a></li>
                         </ul>
                     </div>
                 </div>

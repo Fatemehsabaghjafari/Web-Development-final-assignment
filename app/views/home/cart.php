@@ -27,22 +27,22 @@
             </tr>
         </thead>
         <tbody>
-            <?php
-            foreach ($cartItems as $item) {
-                echo '<tr>';
-                echo '<td>' . $item->name . '</td>';
-                echo '<td>';
-                echo '<input type="number" min="1" value="' . $item->quantity . '" id="quantity_' . $item->id . '">';
-                echo '</td>';
-                echo '<td>€' . $item->price . '</td>';
-                echo '<td>';
-                echo '<button class="btn btn-sm btn-outline-secondary" onclick="modifyQuantity(' . $item->id . ', 1)">+</button>';
-                echo '<button class="btn btn-sm btn-outline-secondary" onclick="modifyQuantity(' . $item->id . ', -1)">-</button>';
-                echo '</td>';
-                echo '<td><button class="btn btn-sm btn-outline-danger" onclick="removeItem(' . $item->id . ')">Remove</button></td>';
-                echo '</tr>';
-            }
-            ?>
+        <?php foreach ($cartItems as $item): ?>
+        <tr>
+            <td><?= $item->name ?></td>
+            <td>
+                <input type="number" min="1" value="<?= $item->quantity ?>" id="quantity_<?= $item->id ?>">
+            </td>
+            <td>€<?= $item->price ?></td>
+            <td>
+                <button class="btn btn-sm btn-outline-secondary" onclick="modifyQuantity(<?= $item->id ?>, 1)">+</button>
+                <button class="btn btn-sm btn-outline-secondary" onclick="modifyQuantity(<?= $item->id ?>, -1)">-</button>
+            </td>
+            <td>
+                <button class="btn btn-sm btn-outline-danger" onclick="removeItem(<?= $item->id ?>)">Remove</button>
+            </td>
+        </tr>
+    <?php endforeach; ?>
         </tbody>
     </table>
     <div class="mt-3">
@@ -50,6 +50,9 @@
         <button class="btn btn-primary" onclick="checkout()">Login to continue checkout</button>
     </div>
 </main>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 

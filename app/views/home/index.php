@@ -19,17 +19,12 @@
 
 <body>
     
-
-
  <div class="jumbotron jumbotron-fluid text-center">
         <div class="container">
             <h1 class="display-4">Welcome to the FS flower shop!</h1>
             <p class="lead">Discover a wide range of flowers.</p>
         </div>
   </div>
-
-   
-
 
 <section class="container mb-4">
         
@@ -60,10 +55,7 @@ include 'search-flowers.php';
            ?>
        </div>
    </div>  
-
 </section>
-
-   
 
 <footer class="bg-dark text-light py-4">
         <div class="container text-center">
