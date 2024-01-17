@@ -102,6 +102,7 @@ function modifyQuantity(itemId, change) {
     sendAjaxRequest('modifyQuantity', { itemId, change: currentQuantity + change }, function (result) {
         // Handle success, e.g., update the quantity on the frontend
         console.log(result.message);
+        viewAllCartItems();
        
     });
 }
@@ -131,3 +132,5 @@ $(document).ready(function () {
 function checkout() {
     window.location.href = '/login';
 }
+
+

@@ -26,9 +26,10 @@
                 <th scope="col">Remove Item</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody >
         <?php foreach ($cartItems as $item): ?>
-        <tr data-itemid="<?= $item->id ?>">
+        <tr>
+        
             <td><?= $item->name ?></td>
             <td>
                 <input type="number" min="1" value="<?= $item->quantity ?>" id="quantity_<?= $item->id ?>">
@@ -39,7 +40,7 @@
                 <button class="btn btn-sm btn-outline-secondary" onclick="modifyQuantity(<?= $item->id ?>, -1)">-</button>
             </td>
             <td>
-                <button class="btn btn-sm btn-outline-danger" onclick="removeItem(<?= $item->id ?>)">Remove</button>
+                <button class="btn btn-sm btn-outline-danger" onclick="removeItem(<?= $item->id ?>);">Remove</button>
             </td>
         </tr>
     <?php endforeach; ?>
