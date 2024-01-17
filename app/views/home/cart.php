@@ -47,15 +47,14 @@
         </tbody>
     </table>
     <div class="mt-3">
-        <h4>Total Amount: €<?php echo number_format($totalAmount, 2); ?></h4>
+    <h4>Total Amount: <span id="totalAmount">€<?php echo number_format($totalAmount, 2); ?></span></h4>
         <button class="btn btn-primary" onclick="checkout()">Login to continue checkout</button>
     </div>
 </main>
-
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script src="views/javascript/script.js"></script>
+
 </body>
 
 </html>

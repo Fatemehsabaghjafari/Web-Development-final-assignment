@@ -11,17 +11,33 @@ class CartController {
     public function index() {
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $cartitems = $this->cartService->getAllCartItems();
-            header('Content-Type: application/json');
-            echo json_encode(['status' => 'success', 'cartItems' => $cartitems]);
-            exit;
+            $myJSON = json_encode($cartitems);
+            echo $myJSON;
         }
+       
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->handlePostRequest();
+           
+            
         }
+        
+       // $totalAmount = $this->calculateTotalAmount($cartItems);
+        
+    }
+
+    private function calculateTotalAmount($cartItems)
+    {
+        $totalAmount = 0;
+        foreach ($cartItems as $item) {
+            $totalAmount += $item->quantity * $item->price;
+        }
+
+        return $totalAmount;
     }
 
     private function handlePostRequest() {
+       
         $postData = json_decode(file_get_contents("php://input"), true);
 
         if (!$postData || !isset($postData['action'])) {
@@ -35,11 +51,13 @@ class CartController {
                 $itemId = $postData['itemId'];
                 $change = $postData['change'];
                 $this->cartService->updateQuantity($itemId, $change);
+              
                 echo json_encode(['status' => 'success', 'message' => 'Quantity modified.']);
                 exit;
             case 'removeItem':
                 $itemId = $postData['itemId'];
-                $this->cartService->removeItem($itemId);
+                $this->cartService->removeItem($itemId);     
+                      
                 echo json_encode(['status' => 'success', 'message' => 'Item removed from cart.']);
                 exit;
             default:
@@ -47,6 +65,7 @@ class CartController {
                 echo json_encode(['status' => 'error', 'message' => 'Invalid action']);
                 exit;
         }
+  
     }
 }
 ?>
