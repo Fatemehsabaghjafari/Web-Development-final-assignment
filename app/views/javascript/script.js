@@ -109,8 +109,4 @@ window.modifyQuantity = function(itemId, amount) {
         .catch(error => console.error('Error removing item:', error));
     };
 
-    // Function to initiate checkout
-    window.checkout = function() {
-        // Implement your logic for checkout
-    };
 });

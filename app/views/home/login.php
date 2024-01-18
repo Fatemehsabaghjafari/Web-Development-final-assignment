@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($username === $user->username && $user->verifyPassword($password)) {
             // Authentication successful
             $_SESSION['user'] = $user;
-            header('Location: /'); // Redirect to the main page
+            header('Location: /home'); // Redirect to the main page
             exit();
         }
     }
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <h1> Welcome! </h1>
+                <h1> Welcome To FS Flower Shop! </h1>
                 <h2>Login</h2>
                 <?php if (isset($error)): ?>
                     <div class="alert alert-danger"><?= $error ?></div>

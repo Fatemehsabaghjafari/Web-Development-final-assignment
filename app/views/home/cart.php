@@ -48,7 +48,7 @@
     </table>
     <div class="mt-3">
     <h4>Total Amount: <span id="totalAmount">€<?php echo number_format($totalAmount, 2); ?></span></h4>
-        <button class="btn btn-primary" onclick="checkout()">Login to continue checkout</button>
+    
     </div>
 </main>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

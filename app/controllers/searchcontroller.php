@@ -1,30 +1,32 @@
 <?php
 
 require_once __DIR__ . '/../services/flowerservice.php';
-require_once __DIR__ . '/../services/cartservice.php';
+//require_once __DIR__ . '/../services/cartservice.php';
 require_once __DIR__ . '/controller.php';
 
-class HomeController extends Controller
+class SearchController extends Controller
 {
     private $flowerService;
-    private $cartService;
+   // private $cartService;
 
     public function __construct()
     {
         $this->flowerService = new \App\Services\FlowerService();
-        $this->cartService = new \App\Services\CartService();
+       // $this->cartService = new \App\Services\CartService();
     }
 
     public function index()
     {
-      // $cartItemCount = $this->cartService->getCartItemCount();
-
+      //$cartItemCount = $this->cartService->getCartItemCount();
+      // Handle adding item to cart
       if (isset($_POST['add_to_cart'])) {
         $this->handleAddToCart();
       }
-        
-        $flowers = $this->flowerService->getAll();
-        include '../views/home/index.php';
+        // Use FlowerService to get all flowers or perform a search
+        //$flowers = $this->flowerService->getAll();
+        $filteredFlowers = $this->flowerService->search();
+
+        include '../views/home/search.php';
     }
 
     private function handleAddToCart()

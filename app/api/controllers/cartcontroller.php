@@ -21,19 +21,8 @@ class CartController {
            
             
         }
-        
-       // $totalAmount = $this->calculateTotalAmount($cartItems);
-        
-    }
 
-    private function calculateTotalAmount($cartItems)
-    {
-        $totalAmount = 0;
-        foreach ($cartItems as $item) {
-            $totalAmount += $item->quantity * $item->price;
-        }
-
-        return $totalAmount;
+        
     }
 
     private function handlePostRequest() {

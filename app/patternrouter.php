@@ -31,7 +31,7 @@ class PatternRouter
         }
 
         // set default controller/method
-        $defaultcontroller = 'home';
+        $defaultcontroller = 'login';
         $defaultmethod = 'index';
 
         // ignore query parameters
