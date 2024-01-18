@@ -21,8 +21,8 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
                             <li class="nav-item"><a href="/home" class="nav-link">Home</a></li>
-                            <li class="nav-item"><a href="/search" class="nav-link">Search Flowers</a></li>
-                            <li class="nav-item"><a href="/cart" class="nav-link">Shoppingcart<i class="fa-solid fa-cart-shopping"></i></a></li>
+                            <li class="nav-item"><a href="/search" class="nav-link">Search</a></li>
+                            <li class="nav-item"><a href="/cart" class="nav-link"><i class="fa-solid fa-cart-shopping"></i></a></li>
                         </ul>
                     </div>
                 </div>

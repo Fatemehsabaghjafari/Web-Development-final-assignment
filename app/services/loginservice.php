@@ -18,4 +18,8 @@ class LoginService
         return $this->repository->getAllUsers();
     }
 
+    public function insertUser($username, $hashedPassword){
+        return $this->repository->insertUser($username, $hashedPassword);
+    }
+
 }

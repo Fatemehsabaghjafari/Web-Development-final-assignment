@@ -18,4 +18,10 @@ class UserRepository {
         $users = $stmt->fetchAll(PDO::FETCH_CLASS, 'App\\Models\\User');
         return $users;
     }
+
+    public function insertUser($username, $hashedPassword) {
+        $stmt = $this->db->prepare('INSERT INTO users (username, password) VALUES (?, ?)');
+        $stmt->execute([$username, $hashedPassword]);
+    }
+    
 }

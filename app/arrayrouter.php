@@ -4,27 +4,32 @@ class ArrayRouter {
       
         $routes = array(
             '' => array(
-                'controller' => 'homecontroller',
+                'controller' => 'logincontroller',
                 'method' => 'index'
             ),
-            'about' => array(
-                'controller' => 'homecontroller',
-                'method' => 'about'
-            ),
+
             'login' => array(
                 'controller' => 'logincontroller',
-                'method' => 'login'
+                'method' => 'index'
             ),
 
-            'add-to-cart' => array(
-               'controller' => 'cartcontroller', 
-                'method' => 'addToCart'
+            'register' => array(
+               'controller' => 'registercontroller', 
+                'method' => 'register'
              ),
-
-            'get-cart-items' => array(
+             'home' => array(
+                'controller' => 'homecontroller', 
+                 'method' => 'index'
+              ),
+              'search' => array(
+                'controller' => 'searchcontroller', 
+                 'method' => 'index'
+              ),
+              'cart' => array(
                 'controller' => 'cartcontroller', 
-                'method' => 'getCartItems'
-             ),
+                 'method' => 'index'
+              ),
+
             
         );
 
