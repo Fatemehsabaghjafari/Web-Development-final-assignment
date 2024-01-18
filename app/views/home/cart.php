@@ -5,16 +5,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
         integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <?php include __DIR__ . '/../header.php'; ?>
     <style>
     <?php include 'style.css'; ?>
     </style>
 </head>
 
 <body>
+    
+<?php include __DIR__ . '/../header.php'; ?>
 
-<main class="container mt-5">
-    <h2>Cart Items</h2>
+<main class="container mt-5 cart-container">
+    <h2 class="cartHeader" >Cart Items</h2>
 
     <table class="table">
         <thead>
@@ -51,6 +52,16 @@
     
     </div>
 </main>
+<footer class="bg-dark text-light py-4">
+        <div class="container text-center">
+            <h4>Follow Us</h4>
+            <div class="social-icons">
+                <a href="#" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+</footer>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script src="views/javascript/script.js"></script>

@@ -20,26 +20,26 @@
 
 <body>
     
- <div class="jumbotron jumbotron-fluid text-center">
+    <div class="jumbotron jumbotron-fluid text-center">
         <div class="container">
             <h1 class="display-4">Welcome to the FS flower shop!</h1>
             <p class="lead">Discover a wide range of flowers.</p>
         </div>
-  </div>
+    </div>
 
-<section class="container mb-4">
+    <section class="container mb-4">
 
-<h2> Flowers </h2>     
+     <h2> Flowers </h2>     
        <div class="row">
            <?php   
                  
            include 'render-flowers.php';
            ?>
        </div>
-   </div>  
-</section>
+     </div>  
+    </section>
 
-<footer class="bg-dark text-light py-4">
+    <footer class="bg-dark text-light py-4">
         <div class="container text-center">
             <h4>Follow Us</h4>
             <div class="social-icons">

@@ -41,12 +41,7 @@ class FlowerRepository {
             $stmt->execute();
     
             $filteredFlowers = $stmt->fetchAll(PDO::FETCH_CLASS, 'App\\Models\\Flower');
-    
-            if (!empty($filteredFlowers)) {
-                include __DIR__ . '/../views/home/search-flowers.php';
-            } else {
-                echo "No matching flowers found.";
-            }
+            return $filteredFlowers;
         }
     }
     

@@ -10,12 +10,11 @@
     <link rel="stylesheet" href="../views/home/style.css">
 </head>
 <body>
-    <main>
-        <div class="container">
-        
+    <div class="mainDivHeader">
+        <div class="container">        
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="/">FS Flower Shop</a>
+                    <a class="navbar-brand" href="/home">FS Flower Shop</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -33,7 +32,7 @@
         <div class="container">
            
         </div>
-    </main>
+</div>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script type="text/javascript" src="views/javascript/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

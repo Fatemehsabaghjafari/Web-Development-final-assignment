@@ -1,34 +1,65 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap');
+/* Add this to your existing CSS file or create a new one */
+.cart-container {
+    margin-top: 0; 
+}
 
+.mainDivHeader{
+    height: 50px;
+}
 body {
     font-family: 'Quicksand', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    margin-top: auto;
 }
 
 h1, h2 {
     font-weight:700;
 } 
-
-
+.cartHeader{
+    margin-top: 0;
+}
 .social-icon {
     margin: 0 10px;
     font-size: 24px;
     transition: color 0.3s ease-in-out;
-    }
+}
 
-    .social-icon:hover {
+.social-icon:hover {
     color: #ffc107; 
-    }
+}
 
-    img {   
+img {   
     max-width: 400px;
     height: 300px;
 }
 
-    .card{
-        height: 500px;
-    }
+.card{
+        height: 400px;
+}
 
 
+.search-results-container {
+    margin-top: 20px;
+    height: 450px;
+}
+
+.jumbotron {
+    margin-bottom: 0; 
+}
+
+
+ 
 /* Add button styles */
 button.add-button {
     background-color: #4caf50; /* Green */
