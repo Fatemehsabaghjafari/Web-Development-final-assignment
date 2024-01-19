@@ -14,15 +14,10 @@ class CartController {
             $myJSON = json_encode($cartitems);
             echo $myJSON;
         }
-       
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->handlePostRequest();
-           
-            
-        }
-
-        
+            $this->handlePostRequest();           
+        }      
     }
 
     private function handlePostRequest() {
@@ -48,6 +43,22 @@ class CartController {
                 $this->cartService->removeItem($itemId);     
                       
                 echo json_encode(['status' => 'success', 'message' => 'Item removed from cart.']);
+                exit;
+            case 'add_to_cart':
+                $product_quantity = 1;
+                $product_name = $postData['product_name'];
+                $product_price = $postData['product_price'];
+        
+            
+               if ($this->cartService->isProductInCart($product_name)) {
+                $display_message = "Item is already in the cart.";
+                echo json_encode(['status' => 'success', 'message' => $display_message]);
+                } 
+                else {      
+                $this->cartService->insertToCart($product_quantity, $product_name, $product_price);
+                $display_message = "Item added to cart!";
+                echo json_encode(['status' => 'success', 'message' => $display_message]);
+                }                       
                 exit;
             default:
                 http_response_code(400);

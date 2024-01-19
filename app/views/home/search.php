@@ -53,7 +53,7 @@
                         <p class="card-text"><small>€<?= $filteredFlower->price ?></small></p>
                         <input type="hidden" name="product_name" value="<?= $filteredFlower->name ?>">
                         <input type="hidden" name="product_price" value="<?= $filteredFlower->price ?>">
-                        <input class="btn btn-primary" type="submit" name="add_to_cart" value="Add to Cart">
+                        <input class="btn btn-primary addToCartBtn" type="submit" name="add_to_cart" value="Add to Cart">
 
                     </div>
                 </div>

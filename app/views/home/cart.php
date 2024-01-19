@@ -27,7 +27,7 @@
                 <th scope="col">Remove Item</th>
             </tr>
         </thead>
-        <tbody >
+        <tbody class="tbody" >
         <?php foreach ($cartItems as $item): ?>
         <tr>
         

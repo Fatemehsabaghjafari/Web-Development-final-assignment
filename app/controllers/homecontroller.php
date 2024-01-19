@@ -18,31 +18,8 @@ class HomeController extends Controller
     public function index()
     {
       // $cartItemCount = $this->cartService->getCartItemCount();
-
-      if (isset($_POST['add_to_cart'])) {
-        $this->handleAddToCart();
-      }
         
         $flowers = $this->flowerService->getAll();
         include '../views/home/index.php';
-    }
-
-    private function handleAddToCart()
-    {
-        $products_quantity = 1;
-        $products_name = $_POST['product_name'];
-        $products_price = $_POST['product_price'];
-
-       // Check if the product is already in the cart
-       if ($this->cartService->isProductInCart($products_name)) {
-        // Display a message indicating that the item is already in the cart
-        $display_message = "Item is already in the cart.";
-        echo "Item is already in the cart.";
-    } else {
-        // The product is not in the cart, proceed with adding to the cart
-        $display_message = "Item added to cart!";
-        echo "Item added to cart!";
-        $this->cartService->insertToCart($products_quantity, $products_name, $products_price);
-    }
     }
 }
